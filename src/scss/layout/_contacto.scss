@@ -1,0 +1,80 @@
+/*
+
+	_contacto.scss aplicación de estilos para sección de contacto
+
+	*/
+
+	@use "base/variables" as v;
+	@use "base/mixins" as m;
+
+	.contacto {
+
+		background-color: v.$skyblue;
+
+		h3 {
+			color: v.$blanco;
+		}
+
+		.contacto-bg {
+			
+			background-image: url(../../src/img/contacto.jpg);
+			height: 46rem;
+		background-size: cover; // Ajusta el tamaño en razón de la altura designada height
+		background-repeat: no-repeat;
+	}
+
+	.formulario {
+		background-color: v.$blanco;
+		margin: -5rem auto 0 auto;
+		width: 80%;
+		padding: 5rem 5rem 0 5rem;
+		border: 1px solid #E1E1E1;
+
+		.campo {
+			@include m.tablet {
+				display: flex;
+			}
+			display: block;
+			align-items: center;
+			margin-bottom: 1rem;
+			gap: 2rem;
+			font-size: 1.5rem;
+
+			.etiqueta-form {
+				flex: 0 0 9rem; /* 0 0: Factor de crecimiento, no crezca, ni tampoco se haga pequeño, pero con un base de 9rem */
+				text-align: right;
+			}
+
+			.campo-form {
+				flex: 1;
+				border: 1px solid #E1E1E1;
+				padding: 1rem 1rem;
+				font-size: 1.4rem;
+			}
+
+			.area-form {
+				height: 10rem;
+			}
+
+			.boton {
+				@include m.telefono {
+					width: 100%;
+				}
+				@include m.desktop {
+					width: auto;
+				}	    		
+				color: v.$blanco;
+				background-color: #EE3124;
+				margin-top: 3rem;
+				border: none;
+				text-align: center;
+				padding: 1rem 3rem; /* arriba-abajo izquierda-derecha */
+				font-size: 1.5rem;
+				text-transform: uppercase;
+				font-weight: 700;
+				margin-bottom: 2rem;
+			}
+		}
+	}
+}
+

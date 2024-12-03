@@ -1,0 +1,53 @@
+/*
+
+	_header.scss aplicación de estilos para barra superior
+
+*/
+
+@use "base/variables" as v;
+@use "base/mixins" as m;
+
+.header {
+	background-color:  v.$skyblue;
+
+	.contenido-header { // Incluye titulo en barra y navegación
+
+		padding: 2rem; // Largo de la barra superior
+		text-align: center; 
+
+		@include m.desktop {
+			display: flex;
+			justify-content: space-between; // Separa de extremo a extremo el titulo y la navegación 
+		}
+
+		h1 {
+			color: #f2f7fc;
+			@include m.desktop { // Perspectiva de escritorio 
+				margin: 0;
+			}
+
+			// margin-bottom: 3rem; // Perspectiva de tablet y teléfono // ERROR REVISAR // se quita 
+		}
+
+	}
+
+	.navegacion-principal { // Aplica solo a la navegación 
+		display: flex; // Este flex para la perspectiva de tablet y teléfono
+		flex-direction: column; // perspectiva de tablet y teléfono, alineación uno arriba del otro
+		align-items: center; // Alineación vertical
+		gap: 2rem; // Separación entra items de la navegación 
+
+		@include m.desktop { // Este aplica a escritorio
+			flex-direction: row; // Alineación uno al lado del otro 
+		}
+
+		a {
+			color: v.$blanco;
+
+		}
+
+		a:hover {
+			color: v.$navyblue;
+		}
+	}
+}

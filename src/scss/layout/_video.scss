@@ -1,0 +1,73 @@
+/*
+
+	_video.scss aplicación de estilos al video loop
+
+	*/
+
+	@use "base/variables" as v;
+	@use "base/mixins" as m;
+
+	.video {
+	position: relative; // Elemento hijo del absolute clase overlay
+    min-height: 40rem; // Controlar el alto minimo del video
+    max-height: 60rem; // Controlar el alto minimo del video
+    overflow: hidden; // Lo que se desborde entre el video y overlay se oculte 
+
+    .overlay {
+		position: absolute; //El elemento padre siempre debe ser absolute, ya que los hijos relative se posicionarán sobre el
+        inset: 0; // Posiciona el degradado sobre todo el elemento absolute relacionado a la clase video
+        background: linear-gradient( // Aplica un degradado
+            270deg, // angulo 
+            rgba(v.$navyblue, 60%), // rgba habilita canal alfa transparencia de un lado
+			rgba( darken(v.$navyblue, 10%), 60%) // rgba habilita canal alfa transparencia de un lado // Deprecated: rgba( darken(v.$navyblue, 10%), 60%)
+			);
+
+        // background-image: linear-gradient(transparent 0%, rgb(54, 88, 151) 100%);
+        
+        display: flex; // Habilitar las caracteristicas flex para alinear h2 y p
+        align-items: center; // Posiciona las etiquetas h2 y p de manera vertical
+
+        .contenido-video {
+        	z-index: 1;
+
+        	h2 {
+        		color: #f2f7fc;
+        		font-size: 5.5rem;
+        		font-weight: 700;
+				margin: 0; // Eliminar margin inferior del H
+				text-align: center; // Perspectiva tablet y teléfono
+				@include m.tablet {
+					text-align: left;
+				}
+
+			}
+
+			p {
+				display: inline-block; // La diferencia entre inline e inline-block es que inline no puede tener margin
+				color: #f2f7fc;
+				font-size: 2.0rem;
+				font-weight: 700;				
+				background-color: rgba(108, 171, 221, 0.7); border-color: rgb(54, 88, 151);
+				border-radius: 1rem;
+				padding: 1rem 2rem;
+				text-align: center; // Perspectiva tablet y teléfono
+				@include m.tablet {
+					text-align: left;
+				}
+
+
+			}
+		}		
+
+	}
+
+	video {
+		width: auto; // El atributo enconge el video de manera armónica para perspectiva tablet y teléfono
+		@include m.desktop {
+			width: 100%;
+		}
+	}
+}
+
+
+
