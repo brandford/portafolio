@@ -121,15 +121,22 @@
 	position: fixed; // Un elemento fijo, incluso en scroll
 	inset: 0; // contempla toda la pantalla
 	margin:0;
+	z-index: 1;
 
-	img { // Ancho máximo de la imagen en Modal
-		max-width: 120rem;
-		height: 835px;
-	    object-fit: cover;
-	    object-position: 0% 0%;
+	img { // Ancho máximo de la imagen en Modal para Tablet y teléfono
+		padding: 1rem;
 	}
 
-	background-color: rgba(v.$negro, 0.5); // Darle el findo negro claro transparente 
+	@include m.tablet {
+		img { // Ancho máximo de la imagen en Modal para desktop y desktop XL
+				max-width: 120rem;
+				height: 835px;
+				object-fit: cover; // Despliegue completo de la imagen, sin ajuste o redimensión
+				object-position: 0% 0%; // La imagen se visualice desde la parte superior derecha, y no al medio  						
+		}
+	}
+
+	background-color: rgba(v.$negro, 0.7); // Darle el findo negro claro transparente 
 	animation: fadeIn ease-in 0.5s; // generar una aninación al abrir el modal: nombre animación, tipo animación, tiempo. Requiere definir @keyframes
 
 	.agrupar-botones {

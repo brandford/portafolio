@@ -28,7 +28,7 @@
         align-items: center; // Posiciona las etiquetas h2 y p de manera vertical
 
         .contenido-video {
-        	z-index: 1;
+        	// z-index: 2;
 
         	h2 {
         		color: #f2f7fc;
@@ -36,6 +36,7 @@
         		font-weight: 700;
 				margin: 0; // Eliminar margin inferior del H
 				text-align: center; // Perspectiva tablet y teléfono
+
 				@include m.tablet {
 					text-align: left;
 				}

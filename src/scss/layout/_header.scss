@@ -46,8 +46,19 @@
 
 		}
 
-		a:hover {
+		a:hover, .active { // Se añade .active para resaltar enlace en la sección activa
 			color: v.$navyblue;
 		}
 	}
+}
+
+.fixed {
+    @include m.desktop { // Aplicar la barra fija solamente para tablet en adelante
+        position: fixed; // Un elemento fijo, incluso en scroll
+        left: 0;
+        top: 0;
+        width: 100%; 
+        box-shadow: .1rem .2rem .3rem #333333;
+	    z-index: 1; // Entre más pequeño el número mayor es su prioridad en el dom
+    }
 }

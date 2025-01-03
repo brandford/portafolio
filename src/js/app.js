@@ -5,9 +5,51 @@
 */
 
 document.addEventListener("DOMContentLoaded", function() {
-	// crearGaleriaProyectos();
-
+	// navegacionFija(); // Deja fija la barra superior
+	efectoScrollEnlace(); // Efecto de desplazamiento desde navegación
+	resaltarEnlace();
 });
+
+function resaltarEnlace() {
+	document.addEventListener("scroll", function() {
+		const secciones = document.querySelectorAll("section");
+		const enlaces = document.querySelectorAll(".navegacion-principal a");
+
+		let seccionActual = '';
+		secciones.forEach( section => {
+			const seccionTop = section.offsetTop;
+			const seccionHight = section.clientHeight;
+			if (window.scrollY >= (seccionTop - seccionHight / 20 )) {
+				// console.log(section.id);
+				seccionActual = section.id;
+			}
+		});
+
+		enlaces.forEach( link => {
+			link.classList.remove("active"); // Elimino clase active para que vaya quitando el estilo en caso que no coincida 
+			if (link.getAttribute("href") === '#' + seccionActual) {
+				link.classList.add("active");
+				// console.log(seccionActual);
+			}
+		})
+
+	})
+}
+
+function efectoScrollEnlace() {
+	const enlaces = document.querySelectorAll(".navegacion-principal a");
+
+	enlaces.forEach(link => {
+		link.addEventListener("click", function(e) {
+			e.preventDefault();
+			console.log(e.target.getAttribute("href"));
+			const seccionEnlace = e.target.getAttribute("href");
+			const seccion = document.querySelector(seccionEnlace);
+
+			seccion.scrollIntoView({behavior: "smooth"});
+		});
+	});
+}
 
 document.addEventListener('keydown', function(e) { // Se ejecuta cuando se presiona la tecla ESC 
 	if(e.keyCode == 27){
@@ -72,6 +114,7 @@ function verProyecto(i) {
 
 	// Agregar al HTML
 	const body = document.querySelector("body");
+	body.classList.add("body-overflow-hidden"); // Añade estilo para evitar scroll cuando el modal está abierto
 	body.appendChild(modal);
 
 }
@@ -89,8 +132,8 @@ function cerrarProyecto() {
 		if (modal) {
 			modal.remove();
 			// Cuando se agrega el overflow:hidden se debe remover sino queda como clase en el body
-			// const body = document.querySelector("body");
-			// body.classList.remove("body-overflow-hidden"); // Elimina overflow:hidden utilizado para evitar desplazamiento en modal
+			const body = document.querySelector("body");
+			body.classList.remove("body-overflow-hidden"); // Elimina overflow:hidden utilizado para evitar desplazamiento en modal
 		}		
 
 	}, 500);
