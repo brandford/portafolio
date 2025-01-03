@@ -59,7 +59,7 @@ document.addEventListener('keydown', function(e) { // Se ejecuta cuando se presi
 
 function verProyecto(i) {
 	console.log(screen.width);
-	if (screen.width <= 480) {
+	if (screen.width <= 768) {
 		console.log("Menos de 380px")
 		return 0;
 	}
