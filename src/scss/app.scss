@@ -1,0 +1,8 @@
+/*
+
+	app.scss realiza el llamado a los demás archivos scss que tienen un guión bajo al inicio del nombre 
+
+*/
+
+@forward "base";
+@forward "layout";

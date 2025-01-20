@@ -1,0 +1,13 @@
+/*
+
+    _index.scss define el orden de compilación de la carpeta layout
+
+*/
+
+@forward "header";
+@forward "video";
+@forward "sobre-mi";
+@forward "habilidades";
+@forward "galeria";
+@forward "contacto";
+@forward "footer";
